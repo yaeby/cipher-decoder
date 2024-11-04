@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 from utils.TextAnalyzer import TextAnalyzer
 
+st.title("Frequency Analysis")
+
 letter_freqs = {
     'Letter': ['E', 'T', 'A', 'O', 'I', 'N', 'S', 'H', 'R', 'D', 'L', 'C', 'U', 'M', 'W', 'F', 'G', 'Y', 'P', 'B', 'V', 'K', 'J', 'X', 'Q', 'Z'],
     'Frequency': [12.7, 9.1, 8.2, 7.5, 7.0, 6.7, 6.3, 6.1, 6.0, 4.3, 4.0, 2.8, 2.8, 2.4, 2.4, 2.2, 2.0, 2.0, 1.9, 1.5, 1.0, 0.8, 0.15, 0.15, 0.10, 0.07]
@@ -14,7 +16,6 @@ letter_freqs = {
 
 st.sidebar.title("Mono-alphabetic cipher decoder:unlock:")
 st.sidebar.caption("A mono-alphabetic ciphertext decoder that analyzes the frequency of characters.")
-st.sidebar.caption("Made by [who ego znaet](https://www.linkedin.com/in/adrian-copta-9058bb291/) :alien:")
 
 with st.sidebar.expander("How it works", expanded=True):
     st.markdown("""
@@ -29,8 +30,6 @@ Note: This decoder only helps you decipher encrypted text and is intended solely
 """
 )
 
-
-st.title("Frequency Analysis")
 
 if 'ANALYZER' not in st.session_state:
     st.session_state['ANALYZER'] = None

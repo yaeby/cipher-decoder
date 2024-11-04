@@ -2,11 +2,11 @@ import streamlit as st
 
 pages = {
     "Home": [
-        st.Page("pages\home.py", title="Homr"),
+        st.Page("pages\home.py", title="Home"),
     ],
-    "Decoders": [
+    "Ciphers": [
         st.Page("pages\\frequency_analysis.py", title="Frequency Analysis"),
-        st.Page("pages\delete.py", title="Playfair"),
+        st.Page("pages\playfair.py", title="Playfair Chiper"),
     ],
 }
 

@@ -1,9 +1,9 @@
 from utils.PlayfairCipher import PlayfairCipher
 
 def test_playfair_cipher():
-    # Create an instance of the PlayfairCipher class
-    # cipher = PlayfairCipher("First Amendment")
-    cipher = PlayfairCipher("First Amendment", alphabet="AĂÂBCDEFGHIÎKLMNOPQRSȘTȚUVWXYZ")
+    alphabet = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
+    alphabet = 'AĂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ'
+    cipher = PlayfairCipher("First Amendment", alphabet)
 
     # Test the encryption method
     message = "Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the government for a redress of grievances."

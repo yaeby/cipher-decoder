@@ -1,23 +1,40 @@
 class PlayfairCipher:
     def __init__(self, key: str, alphabet: str):
-        self.key = key.upper()
         self.alphabet = alphabet
+        self.key = self._setKey(key)
+
+    def _setKey(self, key: str) -> str:
+        """
+        Set the key for the Playfair cipher.
+        """
+        if len(self.alphabet) != 25:
+            key = key.replace('Â', 'A').replace(' ', '').upper() + self.alphabet
+        else:
+            key = key.replace('J', 'I').replace(' ', '').upper() + self.alphabet
+        key = "".join(dict.fromkeys(key))
+        print(key)
+        return key
 
     def _create_playfair_square(self) -> list:
         """
         Generate the Playfair square for the given phrase.
         """
-        key = self.key.replace('J', 'I').replace(' ', '').upper() + self.alphabet
-        key = "".join(dict.fromkeys(key))
-        # Create a square that fits all characters (6x5 in this case)
-        rows = (len(key) + 4) // 5  # Calculate needed rows
+        # if len(self.alphabet) != 25:
+        #     key = self.key.replace('Â', 'A').replace(' ', '').upper() + self.alphabet
+        # else:
+        #     key = self.key.replace('J', 'I').replace(' ', '').upper() + self.alphabet
+
+        # key = "".join(dict.fromkeys(key))
+
+        rows = (len(self.key) + 4) // 5  
         grid = []
-        for i in range(0, len(key), 5):
-            row = key[i:i+5]
+        for i in range(0, len(self.key), 5):
+            row = self.key[i:i+5]
             # Pad the last row with empty spaces if needed
             while len(row) < 5:
                 row += ' '
             grid.append([k for k in row])
+        print(grid)
         return grid
 
     def _find_location(self, grid, char):

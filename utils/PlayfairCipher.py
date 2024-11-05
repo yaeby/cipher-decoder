@@ -19,14 +19,13 @@ class PlayfairCipher:
         """
         Generate the Playfair square for the given phrase.
         """
-
-        rows = (len(self.key) + 4) // 5  
         grid = []
         for i in range(0, len(self.key), 5):
             row = self.key[i:i+5]
 
             while len(row) < 5:
                 row += ' '
+
             grid.append([k for k in row])
 
         return grid
@@ -84,7 +83,7 @@ class PlayfairCipher:
                 ciphertext += sub1 + sub2
             except ValueError as e:
                 print(f"Warning: {str(e)}")
-                ciphertext += digraph  # Keep original characters if not found
+                ciphertext += digraph 
 
         return ciphertext, playfair_square
 

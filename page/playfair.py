@@ -21,18 +21,20 @@ with tab1:
     message = st.text_area(label="Text to encrypt", placeholder="Enter the message to encrypt", height=200)
 
     if st.button("Encrypt"):
-        encrypeted = pf.playfair_encrypt(message)
+        encrypeted, square = pf.playfair_encrypt(message)
 
     if(encrypeted != ""):
         st.write("Encrypted message: ", encrypeted)
+        st.table(square)
 
 with tab2:
     decrypted = ""
     message = st.text_area(label="Text to decrypt", placeholder="Enter the message to decrypt", height=200)
 
     if st.button("Decrypt"):
-        decrypted = pf.playfair_decrypt(message)
+        decrypted, square = pf.playfair_decrypt(message)
 
     if(decrypted != ""):
         st.write("Decrypted message: ", decrypted)
+        st.table(square)
 

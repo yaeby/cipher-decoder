@@ -12,29 +12,23 @@ class PlayfairCipher:
         else:
             key = key.replace('J', 'I').replace(' ', '').upper() + self.alphabet
         key = "".join(dict.fromkeys(key))
-        print(key)
+
         return key
 
     def _create_playfair_square(self) -> list:
         """
         Generate the Playfair square for the given phrase.
         """
-        # if len(self.alphabet) != 25:
-        #     key = self.key.replace('Â', 'A').replace(' ', '').upper() + self.alphabet
-        # else:
-        #     key = self.key.replace('J', 'I').replace(' ', '').upper() + self.alphabet
-
-        # key = "".join(dict.fromkeys(key))
 
         rows = (len(self.key) + 4) // 5  
         grid = []
         for i in range(0, len(self.key), 5):
             row = self.key[i:i+5]
-            # Pad the last row with empty spaces if needed
+
             while len(row) < 5:
                 row += ' '
             grid.append([k for k in row])
-        print(grid)
+
         return grid
 
     def _find_location(self, grid, char):
@@ -46,7 +40,6 @@ class PlayfairCipher:
             for j in range(5):  # Always 5 columns
                 if grid[i][j] == char:
                     return i, j
-        # If character not found, handle the error
         raise ValueError(f"Character {char} not found in the Playfair square")
 
     def playfair_encrypt(self, message: str) -> str:
@@ -93,7 +86,7 @@ class PlayfairCipher:
                 print(f"Warning: {str(e)}")
                 ciphertext += digraph  # Keep original characters if not found
 
-        return ciphertext
+        return ciphertext, playfair_square
 
     def playfair_decrypt(self, ciphertext: str) -> str:
         """
@@ -127,4 +120,4 @@ class PlayfairCipher:
 
         # Remove padding X's
         message = message.replace('X', '')
-        return message
+        return message, playfair_square

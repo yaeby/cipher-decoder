@@ -2,7 +2,7 @@ import streamlit as st
 
 pages = {
     "Home": [
-        st.Page("page\home.py", title="Home"),
+        st.Page("page\\home.py", title="Home"),
     ],
     "Ciphers": [
         st.Page("page\\frequency_analysis.py", title="Frequency Analysis"),

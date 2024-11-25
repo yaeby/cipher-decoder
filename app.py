@@ -6,8 +6,8 @@ pages = {
     ],
     "Ciphers": [
         st.Page("page\\frequency_analysis.py", title="Frequency Analysis"),
-        st.Page("page\playfair.py", title="Playfair Cipher"),
-        st.Page("page\des.py", title="DES Cipher"),  # Add this line
+        st.Page("page\\playfair.py", title="Playfair Cipher"),
+        st.Page("page\\des.py", title="DES Cipher"),
     ],
 }
 

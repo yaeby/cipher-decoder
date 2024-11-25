@@ -1,13 +1,9 @@
-import numpy as np
-
 class DESCipher:
     def __init__(self, key='abcdefgh'):
-        # Validate key length
         if len(key) != 8:
             raise ValueError("Key must be exactly 8 characters long")
         
         self.key = key
-        # Predefined tables as class attributes
         self.ip_table = [
             58, 50, 42, 34, 26, 18, 10, 2,
             60, 52, 44, 36, 28, 20, 12, 4,
@@ -138,7 +134,6 @@ class DESCipher:
         
         # Pad or truncate the binary representation to 64 bits
         binary_representation = binary_representation[:64].ljust(64, '0')
-        
         return binary_representation
 
     def binary_to_ascii(self, binary_str):

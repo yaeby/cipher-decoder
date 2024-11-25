@@ -24,16 +24,12 @@ with tab1:
             st.error("Key must be exactly 8 characters long")
         else:
             try:
-                # Create DES Cipher instance
                 des_cipher = DESCipher(key)
                 
-                # Perform encryption
                 encryption_details = des_cipher.encrypt(plaintext)
                 
-                # Display encryption results
                 st.success(f"Encrypted Text: {encryption_details['final_cipher_text']}")
                 
-                # Display round details
                 st.subheader("Encryption Rounds")
                 for round_info in encryption_details['rounds']:
                     with st.expander(f"Round {round_info['round']}"):
@@ -45,7 +41,6 @@ with tab1:
                         st.write(f"S-Box Substituted: {round_info['s_box_substituted']}")
                         st.write(f"P-Box Result: {round_info['p_box_result']}")
                 
-                # Display final binary and text
                 st.subheader("Final Cipher")
                 st.write(f"Binary: {encryption_details['final_cipher_binary']}")
                 st.write(f"Text: {encryption_details['final_cipher_text']}")
@@ -65,16 +60,12 @@ with tab2:
             st.error("Key must be exactly 8 characters long")
         else:
             try:
-                # Create DES Cipher instance
                 des_cipher = DESCipher(key)
                 
-                # Perform decryption
                 decryption_details = des_cipher.decrypt(ciphertext_input)
                 
-                # Display decryption results
                 st.success(f"Decrypted Text: {decryption_details['final_plaintext']}")
                 
-                # Display round details
                 st.subheader("Decryption Rounds")
                 for round_info in decryption_details['rounds']:
                     with st.expander(f"Round {round_info['round']}"):
@@ -86,7 +77,6 @@ with tab2:
                         st.write(f"S-Box Substituted: {round_info['s_box_substituted']}")
                         st.write(f"P-Box Result: {round_info['p_box_result']}")
                 
-                # Display final binary and text
                 st.subheader("Final Plaintext")
                 st.write(f"Binary: {decryption_details['final_plaintext_binary']}")
                 st.write(f"Text: {decryption_details['final_plaintext']}")

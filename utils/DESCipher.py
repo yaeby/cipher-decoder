@@ -146,8 +146,7 @@ class DESCipher:
         # Convert key to binary
         binary_representation_key = self.str_to_bin(self.key)
         
-        # Similar key generation logic from original script
-        # This is a simplified version and should match the original implementation
+        # Key generation 
         pc1_key_str = ''.join(binary_representation_key[bit - 1] for bit in self.pc1_table)
         
         c0 = pc1_key_str[:28]

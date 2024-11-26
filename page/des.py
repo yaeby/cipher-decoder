@@ -16,7 +16,8 @@ with tab1:
     plaintext = st.text_area(
         label="Text to encrypt",
         placeholder="Enter the message to encrypt",
-        height=100
+        max_chars=8
+        # height=100
     )
 
     if st.button("Encrypt", key="encrypt_button"):
@@ -52,7 +53,8 @@ with tab2:
     ciphertext_input = st.text_area(
         label="Text to decrypt",
         placeholder="Enter the text to decrypt",
-        height=100
+        max_chars=8
+        # height=100
     )
 
     if st.button("Decrypt", key="decrypt_button"):

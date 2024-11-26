@@ -2,6 +2,21 @@ import streamlit as st
 from utils.DESCipher import DESCipher
 
 st.title("DES (Data Encryption Standard)")
+st.sidebar.title("Block cipher :unlock:")
+st.sidebar.caption("DES algorithm implementation")
+
+with st.sidebar.expander("How it works", expanded=True):
+    st.markdown("""
+    - **Step 1:** Introduce a 8 charachter long key `(64bit)`.
+    - **Step 2:** Then introduce a message that is also 8 characters long `(64bit)`.
+    - **Step 3:** Now, you are free to encrypt or decrypt any message.
+    - You can see the details of each rounds encryption or decryption process.
+    """)
+
+st.sidebar.info("""
+Note: The implementation encrypts/decrypts only a block of 64 bits, it does not support multiple blocks.
+"""
+)
 
 # Input section
 key = st.text_input(
@@ -37,6 +52,7 @@ with tab1:
                         st.write(f"Left Half (LPT): {round_info['lpt']}")
                         st.write(f"Right Half (RPT): {round_info['rpt']}")
                         st.write(f"Round Key: {round_info['round_key']}")
+                        st.write("Function F:")
                         st.write(f"Expanded Result: {round_info['expanded_result']}")
                         st.write(f"XOR Result: {round_info['xor_result']}")
                         st.write(f"S-Box Substituted: {round_info['s_box_substituted']}")

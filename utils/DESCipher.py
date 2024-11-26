@@ -2,8 +2,8 @@ class DESCipher:
     def __init__(self, key='abcdefgh'):
         if len(key) != 8:
             raise ValueError("Key must be exactly 8 characters long")
-        
-        self.key = key
+        self.key = self.str_to_bin(key)
+
         self.ip_table = [
             58, 50, 42, 34, 26, 18, 10, 2,
             60, 52, 44, 36, 28, 20, 12, 4,
@@ -123,6 +123,8 @@ class DESCipher:
             33, 1, 41, 9, 49, 17, 57, 25
         ]
 
+        self.round_keys = self.generate_round_keys()
+
     def str_to_bin(self, user_input):
         """Convert string to 64-bit binary representation"""
         binary_representation = ''
@@ -146,7 +148,7 @@ class DESCipher:
         # Convert key to binary
         binary_representation_key = self.str_to_bin(self.key)
         
-        # Key generation 
+        # Key generation logic from original script
         pc1_key_str = ''.join(binary_representation_key[bit - 1] for bit in self.pc1_table)
         
         c0 = pc1_key_str[:28]
@@ -179,7 +181,7 @@ class DESCipher:
         binary_rep_of_input = self.str_to_bin(plaintext)
         
         # Generate round keys
-        round_keys = self.generate_round_keys()
+        round_keys = self.round_keys
         
         # Initial Permutation
         ip_result_str = ''.join(binary_rep_of_input[bit - 1] for bit in self.ip_table)
@@ -246,7 +248,7 @@ class DESCipher:
         binary_cipher = self.str_to_bin(ciphertext)
         
         # Generate round keys
-        round_keys = self.generate_round_keys()
+        round_keys = self.round_keys[::-1]
         
         # Initial Permutation
         ip_dec_result_str = ''.join(binary_cipher[bit - 1] for bit in self.ip_table)
@@ -261,14 +263,14 @@ class DESCipher:
                 'round': round_num + 1,
                 'lpt': lpt,
                 'rpt': rpt,
-                'round_key': round_keys[15 - round_num]
+                'round_key': round_keys[round_num]
             }
             
             # Expansion
             expanded_result = ''.join([rpt[i - 1] for i in self.e_box_table])
             
             # XOR with round key
-            xor_result = ''.join(str(int(a) ^ int(b)) for a, b in zip(expanded_result, round_keys[15 - round_num]))
+            xor_result = ''.join(str(int(a) ^ int(b)) for a, b in zip(expanded_result, round_keys[round_num]))
             
             # S-box substitution
             s_box_substituted = self._apply_s_boxes(xor_result)

@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from utils.TextAnalyzer import TextAnalyzer
 
-st.title("Frequency Analysis")
+st.title("Frequency Analysis :bar_chart:")
 
 letter_freqs = {
     'Letter': ['E', 'T', 'A', 'O', 'I', 'N', 'S', 'H', 'R', 'D', 'L', 'C', 'U', 'M', 'W', 'F', 'G', 'Y', 'P', 'B', 'V', 'K', 'J', 'X', 'Q', 'Z'],

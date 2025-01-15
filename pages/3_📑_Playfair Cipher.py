@@ -9,7 +9,8 @@ with st.sidebar.expander("How it works", expanded=True):
     st.markdown("""
     - **Step 1:** Introduce a key.
     - **Step 2:** Select a language.
-    - **Step 3:** Introduce a message to encrypt or decrypt.
+    - **Step 3:** Select a tab: `Encrypt` or `Decrypt`.
+    - **Step 4:** Introduce a message.
     - Verify using playfair tabel.
     """)
 
